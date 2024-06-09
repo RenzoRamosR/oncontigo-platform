@@ -24,4 +24,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IAM\Infrastructure\Hashing\" />
+    <Folder Include="IAM\Infrastructure\Tokens\" />
+    <Folder Include="IAM\Infrastructure\Pipeline\" />
+    <Folder Include="IAM\Infrastructure\Persistence\" />
+    <Folder Include="IAM\Interfaces\REST\Transform\" />
+    <Folder Include="IAM\Interfaces\REST\Resources\" />
+  </ItemGroup>
+
 </Project>
