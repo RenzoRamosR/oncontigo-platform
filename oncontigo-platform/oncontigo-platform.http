@@ -1,0 +1,6 @@
+@oncontigo_platform_HostAddress = http://localhost:5083
+
+GET {{oncontigo_platform_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
