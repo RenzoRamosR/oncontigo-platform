@@ -25,6 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="IAM\Infrastructure\Hashing\" />
+    <Folder Include="IAM\Infrastructure\Tokens\" />
+    <Folder Include="IAM\Infrastructure\Pipeline\" />
+    <Folder Include="IAM\Infrastructure\Persistence\" />
+    <Folder Include="IAM\Interfaces\REST\Transform\" />
+    <Folder Include="IAM\Interfaces\REST\Resources\" />                 
     <Folder Include="HealthTracking\Application\Internal\OutbondServices\ACL\" />
   </ItemGroup>
 
