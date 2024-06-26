@@ -5,9 +5,9 @@ namespace oncontigo_platform.HealthTracking.Interfaces.REST.Transformers
 {
     public static class MedicineResourceFromEntityAssembler
     {
-        public static MedicineResource ToResourceFromEntity(Medicine entity)
+        /*public static MedicineResource ToResourceFromEntity(Medicine entity)
         {
 
-        }
+        }*/
     }
 }

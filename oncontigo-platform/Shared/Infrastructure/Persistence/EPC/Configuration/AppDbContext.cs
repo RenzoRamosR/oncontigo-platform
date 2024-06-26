@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration.Extensions;
+using oncontigo_platform.IAM.Domain.Model.Aggregates;
 
 namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
 {
@@ -22,6 +23,11 @@ namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
             builder.Entity<>().Property(f => f.NewsApiKey).IsRequired();
             builder.Entity<>().Property(f => f.SourceId).IsRequired();
             **/
+            builder.Entity<User>().ToTable("Users");
+            builder.Entity<User>().HasKey(c => c.Id);
+            builder.Entity<User>().Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<User>().Property(c => c.Email).IsRequired().HasMaxLength(30);
+            builder.Entity<User>().Property(c => c.PasswordHash).IsRequired();
             builder.UseSnakeCaseNamingConvention();
 
         }
