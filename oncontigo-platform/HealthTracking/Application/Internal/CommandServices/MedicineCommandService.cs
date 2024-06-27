@@ -12,6 +12,7 @@ namespace oncontigo_platform.HealthTracking.Application.Internal.CommandServices
         {
             var medicine = new Medicine(command.MedicineName, command.MedicineDescription);
             await medicineRepository.AddAsync(medicine);
+            await unitOfWork.CompleteAsync();
             return medicine;
         }
     }
