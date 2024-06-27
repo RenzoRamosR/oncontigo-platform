@@ -1,6 +1,3 @@
-﻿namespace oncontigo_platform.Profiles.Domain.Model.Queries
-{
-    public class GetAllDoctorsQuery
-    {
-    }
-}
+﻿namespace oncontigo_platform.Profiles.Domain.Model.Queries;
+
+public record GetAllDoctorsQuery();

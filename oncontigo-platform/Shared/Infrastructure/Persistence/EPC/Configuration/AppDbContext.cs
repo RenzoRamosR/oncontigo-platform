@@ -28,6 +28,7 @@ namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
             builder.Entity<User>().Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(c => c.Email).IsRequired().HasMaxLength(30);
             builder.Entity<User>().Property(c => c.PasswordHash).IsRequired();
+
             builder.UseSnakeCaseNamingConvention();
 
         }

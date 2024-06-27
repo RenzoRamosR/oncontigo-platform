@@ -1,6 +1,3 @@
-﻿namespace oncontigo_platform.Profiles.Domain.Model.Commands
-{
-    public class CreateDoctorCommand
-    {
-    }
-}
+﻿namespace oncontigo_platform.Profiles.Domain.Model.Commands;
+
+public record CreateDoctorCommand(int UserId);

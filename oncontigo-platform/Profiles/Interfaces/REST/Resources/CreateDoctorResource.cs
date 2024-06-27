@@ -1,6 +1,3 @@
-﻿namespace oncontigo_platform.Profiles.Interfaces.REST.Resources
-{
-    public class CreateDoctorResource
-    {
-    }
-}
+﻿namespace oncontigo_platform.Profiles.Interfaces.REST.Resources;
+
+public record CreateDoctorResource (int Id);
