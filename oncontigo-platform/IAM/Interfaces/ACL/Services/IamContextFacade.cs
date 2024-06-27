@@ -6,26 +6,26 @@ namespace oncontigo_platform.IAM.Interfaces.ACL.Services;
 
 public class IamContextFacade(IUserCommandService userCommandService, IUserQueryService userQueryService) : IIamContextFacade
 {
-    public async Task<int> CreateUser(string username, string password)
+    public async Task<int> CreateUser(string email, string password)
     {
-        var signUpCommand = new SignUpCommand(username, password);
+        var signUpCommand = new SignUpCommand(email, password);
         await userCommandService.Handle(signUpCommand);
-        var getUserByUsernameQuery = new GetUserByUsernameQuery(username);
-        var result = await userQueryService.Handle(getUserByUsernameQuery);
+        var getUserByEmailQuery = new GetUserByEmailQuery(email);
+        var result = await userQueryService.Handle(getUserByEmailQuery);
         return result?.Id ?? 0;
     }
 
-    public async Task<int> FetchUserIdByUsername(string username)
+    public async Task<int> FetchUserIdByEmail(string email)
     {
-        var getUserByUsernameQuery = new GetUserByUsernameQuery(username);
-        var result = await userQueryService.Handle(getUserByUsernameQuery);
+        var getUserByEmailQuery = new GetUserByEmailQuery(email);
+        var result = await userQueryService.Handle(getUserByEmailQuery);
         return result?.Id ?? 0;
     }
 
-    public async Task<string> FetchUsernameByUserId(int userId)
+    public async Task<string> FetchEmailByUserId(int userId)
     {
         var getUserByIdQuery = new GetUserByIdQuery(userId);
         var result = await userQueryService.Handle(getUserByIdQuery);
-        return result?.Username ?? string.Empty;
+        return result?.Email ?? string.Empty;
     }
 }
