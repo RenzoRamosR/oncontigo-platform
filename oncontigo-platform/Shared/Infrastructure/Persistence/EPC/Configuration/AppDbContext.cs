@@ -2,6 +2,7 @@
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration.Extensions;
 using oncontigo_platform.IAM.Domain.Model.Aggregates;
+using oncontigo_platform.HealthTracking.Domain.Model.Entities;
 
 namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
 {
@@ -16,6 +17,19 @@ namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<Medicine>().ToTable("medicines");
+            builder.Entity<Medicine>().HasKey(m => m.Id);
+            builder.Entity<Medicine>().Property(m => m.Id).IsRequired().ValueGeneratedOnAdd();
+            builder.Entity<Medicine>().OwnsOne(m => m.Information,
+                mI =>
+                {
+                    mI.WithOwner().HasForeignKey("Id");
+                    mI.Property(mI => mI.Name).HasColumnName("MedicineName");
+                    mI.Property(mI=> mI.Description).HasColumnName("MedicineDescription");
+                });
+
+            
             /*
             builder.Entity<>().ToTable("F");
             builder.Entity<>().HasKey(f => f.Id);
@@ -28,6 +42,7 @@ namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
             builder.Entity<User>().Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<User>().Property(c => c.Email).IsRequired().HasMaxLength(30);
             builder.Entity<User>().Property(c => c.PasswordHash).IsRequired();
+
             builder.UseSnakeCaseNamingConvention();
 
         }
