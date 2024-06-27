@@ -6,4 +6,8 @@ public interface IProfilesContextFacade
         string postalCode, string country);
 
     Task<int> FetchProfileIdByEmail(string email);
+
+    Task<int> FetchDoctorIdById(int doctorId);
+
+    Task<int> FetchPatientIdById(int patientId);
 }
