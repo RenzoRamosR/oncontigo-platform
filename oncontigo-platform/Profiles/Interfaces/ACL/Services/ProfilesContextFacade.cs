@@ -36,4 +36,5 @@ public class ProfilesContextFacade(IProfileCommandService profileCommandService,
         var patient = await patientQueryService.Handle(getPatientByIdQuery);
         return patient?.Id ?? 0;
     }
+
 }
