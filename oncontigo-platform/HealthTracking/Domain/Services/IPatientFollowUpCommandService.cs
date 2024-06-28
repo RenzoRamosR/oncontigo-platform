@@ -6,6 +6,6 @@ namespace oncontigo_platform.HealthTracking.Domain.Services
     public interface IPatientFollowUpCommandService
     {
         Task<PatientFollowUp?> Handle(CreatePatientFollowUpCommand command);
-        Task<PatientFollowUp?> Handle(RemovePatientFollowUpByPatientId command);
+        Task<PatientFollowUp?> Handle(RemovePatientFollowUpByPatientIdCommand command);
     }
 }
