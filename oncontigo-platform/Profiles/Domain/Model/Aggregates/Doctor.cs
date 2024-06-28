@@ -1,4 +1,5 @@
 ﻿using oncontigo_platform.Profiles.Domain.Model.Commands;
+using Org.BouncyCastle.Bcpg;
 
 namespace oncontigo_platform.Profiles.Domain.Model.Aggregates;
 public partial class Doctor
