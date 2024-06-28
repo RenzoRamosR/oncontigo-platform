@@ -21,4 +21,5 @@ public class ProfilesContextFacade(IPatientQueryService patientQueryService, IDo
         var patient = await patientQueryService.Handle(getPatientByIdQuery);
         return patient?.Id ?? 0;
     }
+
 }
