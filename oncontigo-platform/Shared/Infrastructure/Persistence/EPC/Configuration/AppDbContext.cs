@@ -4,6 +4,8 @@ using oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration.Ext
 using oncontigo_platform.HealthTracking.Domain.Model.Entities;
 using oncontigo_platform.IAM.Domain.Model.Aggregates;
 using oncontigo_platform.Profiles.Domain.Model.Aggregates;
+using oncontigo_platform.HealthTracking.Domain.Model.Aggregates;
+using oncontigo_platform.HealthTracking.Domain.Model.ValueObjects;
 
 
 namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
@@ -29,6 +31,31 @@ namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
                     mI.Property(mI => mI.Name).HasColumnName("MedicineName");
                     mI.Property(mI=> mI.Description).HasColumnName("MedicineDescription");
                 });
+
+            builder.Entity<PatientFollowUp>()
+                .ToTable("patient_follow_ups")  
+                .HasKey(pf => pf.Id); 
+
+            builder.Entity<PatientFollowUp>()
+                .Property(pf => pf.Id)
+                .IsRequired()
+                .ValueGeneratedOnAdd();
+
+            builder.Entity<PatientFollowUp>()
+                .Property(pf => pf.Status)
+                .IsRequired();
+
+            builder.Entity<PatientFollowUp>()
+                .HasMany(pf => pf.Medicines)
+                .WithOne(m => m.PatientFollowUp)
+                .HasForeignKey(m => m.PatientFollowUpId);
+
+            builder.Entity<PatientFollowUp>()
+                .HasOne<PatientId>();
+
+            builder.Entity<PatientFollowUp>()
+                .HasOne<DoctorId>();
+
 
             builder.Entity<User>().ToTable("Users");
             builder.Entity<User>().HasKey(c => c.Id);

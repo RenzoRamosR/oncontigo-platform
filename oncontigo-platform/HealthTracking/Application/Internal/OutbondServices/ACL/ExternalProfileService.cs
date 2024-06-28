@@ -3,7 +3,7 @@ using oncontigo_platform.Profiles.Interfaces.ACL;
 
 namespace oncontigo_platform.HealthTracking.Application.Internal.OutbondServices.ACL
 {
-    public class ExternalProfileService(IProfilesContextFacade profilesContextFacade)
+    public class ExternalProfileService(IProfilesContextFacade profilesContextFacade):IExternalProfileService
     {
         public async Task<DoctorId?> FetchDoctorIdById(int doctorId)
         {

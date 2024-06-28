@@ -29,6 +29,9 @@ using oncontigo_platform.Profiles.Infrastructure;
 using oncontigo_platform.Profiles.Domain.Services;
 using oncontigo_platform.Profiles.Application.QueryServices;
 using oncontigo_platform.Profiles.Application.CommandServices;
+using oncontigo_platform.HealthTracking.Application.Internal.OutbondServices.ACL;
+using oncontigo_platform.Profiles.Interfaces.ACL;
+using oncontigo_platform.Profiles.Interfaces.ACL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -98,11 +101,15 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IHashingService, HashingService>();
 builder.Services.AddScoped<IIamContextFacade, IamContextFacade>();
 
-builder.Services.AddRouting(o => o.LowercaseUrls = true);
+builder.Services.AddScoped<IPatientFollowUpRepository, PatientFollowUpRepository>();
+builder.Services.AddScoped<IPatientFollowUpCommandService, PatientFollowUpCommandService>();
+builder.Services.AddScoped<IPatientFollowUpQueryService, PatientFollowUpQueryService>();
 
 builder.Services.AddScoped<IMedicineRepository,MedicineRepository>();
 builder.Services.AddScoped<IMedicineCommandService,MedicineCommandService>();
 builder.Services.AddScoped<IMedicineQueryService, MedicineQueryService>();
+builder.Services.AddScoped<IProfilesContextFacade, ProfilesContextFacade>();
+builder.Services.AddScoped<IExternalProfileService, ExternalProfileService>();
 
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IDoctorQueryService, DoctorQueryService>();
@@ -112,6 +119,10 @@ builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IPatientQueryService, PatientQueryService>();
 builder.Services.AddScoped<IPatientCommandService, PatientCommandService>();
 
+
+
+
+builder.Services.AddRouting(o => o.LowercaseUrls = true);
 
 var app = builder.Build();
 
