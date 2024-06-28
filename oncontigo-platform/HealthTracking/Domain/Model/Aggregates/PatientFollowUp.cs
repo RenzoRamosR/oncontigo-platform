@@ -13,7 +13,7 @@ namespace oncontigo_platform.HealthTracking.Domain.Model.Aggregates
 
         public DoctorId DoctorId { get; set; }
 
-        public EStatus? Status { get; set; }
+        public EStatus Status { get; set; }
 
         public ICollection<Medicine> Medicines { get; set; } = new List<Medicine>();
 
@@ -23,10 +23,10 @@ namespace oncontigo_platform.HealthTracking.Domain.Model.Aggregates
             PatientId = new PatientId(0);
             DoctorId = new DoctorId(0);
         }
-        public PatientFollowUp(int patientId, int doctorId, EStatus status)
+        public PatientFollowUp(PatientId patientId, DoctorId doctorId, EStatus status)
         {
-            PatientId = new PatientId(patientId);
-            DoctorId = new DoctorId(doctorId);
+            PatientId = patientId;
+            DoctorId = doctorId;
             Status = status;
         }
         public PatientFollowUp(CreatePatientFollowUpCommand command)

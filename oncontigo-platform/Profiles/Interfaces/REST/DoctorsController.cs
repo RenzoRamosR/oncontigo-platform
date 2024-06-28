@@ -34,7 +34,7 @@ public class DoctorsController(IDoctorCommandService doctorCommandService, IDoct
         return Ok(doctorResources);
     }
 
-    [HttpGet("{doctortId:int}")]
+    [HttpGet("{doctorId:int}")]
     public async Task<IActionResult> GetDoctorById(int doctorId)
     {
         var getDoctorByIdQuery = new GetDoctorByIdQuery(doctorId);

@@ -7,7 +7,7 @@ namespace oncontigo_platform.HealthTracking.Interfaces.REST.Transformers
     {
         public static CreateMedicineCommand ToCommandFromResource(CreateMedicineResource resource)
         {
-            return new CreateMedicineCommand(resource.medicineName, resource.medicineDescription);
+            return new CreateMedicineCommand(resource.medicineName, resource.medicineDescription, resource.patientFollowUpId);
         }
     }
 }
