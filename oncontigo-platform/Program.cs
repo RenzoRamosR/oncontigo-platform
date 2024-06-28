@@ -17,12 +17,7 @@ using oncontigo_platform.IAM.Interfaces.ACL.Services;
 using oncontigo_platform.IAM.Interfaces.ACL;
 using oncontigo_platform.Shared.Domain.Repositories;
 using oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Repositories;
-
-using oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration;
 using oncontigo_platform.Shared.Interfaces.ASP.Configuration;
-using Microsoft.EntityFrameworkCore;
-using oncontigo_platform.Shared.Domain.Repositories;
-using oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Repositories;
 using oncontigo_platform.HealthTracking.Domain.Repositories;
 using oncontigo_platform.HealthTracking.Infrastructure;
 using oncontigo_platform.HealthTracking.Domain.Services;

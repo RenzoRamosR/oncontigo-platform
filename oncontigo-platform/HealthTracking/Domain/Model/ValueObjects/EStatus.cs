@@ -1,6 +1,7 @@
 ﻿namespace oncontigo_platform.HealthTracking.Domain.Model.ValueObjects
 {
-    public class EStatus
+    public enum EStatus
     {
+        InProcess =1, Concluded =2
     }
 }

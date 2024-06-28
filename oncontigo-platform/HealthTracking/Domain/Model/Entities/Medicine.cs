@@ -9,7 +9,9 @@ namespace oncontigo_platform.HealthTracking.Domain.Model.Entities
         public MedicineInformation Information { get; private set; }
 
         // Constructor sin argumentos para EF Core
-        private Medicine() { }
+        private Medicine() {
+            Information = new MedicineInformation(string.Empty, string.Empty);
+        }
 
         public Medicine(string name, string description)
         {
@@ -19,6 +21,11 @@ namespace oncontigo_platform.HealthTracking.Domain.Model.Entities
         public Medicine(CreateMedicineCommand command) : this(command.MedicineName, command.MedicineDescription)
         {
             // Puedes agregar más lógica aquí si es necesario
+        }
+
+        public void UpdateDetails(string newName, string newDescription)
+        {
+            Information = new MedicineInformation(newName, newDescription);
         }
     }
 }
