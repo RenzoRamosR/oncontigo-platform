@@ -1,5 +1,7 @@
 ﻿namespace oncontigo_platform.HealthTracking.Domain.Model.ValueObjects
 {
-    public record MedicineInformation(string Name, string Description);
-    
+    public enum EStatus
+    {
+        InProcess =1, Concluded =2
+    }
 }

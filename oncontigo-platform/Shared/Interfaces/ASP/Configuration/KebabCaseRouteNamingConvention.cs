@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using oncontigo_platform.Shared.Infrastructure.Interfaces.ASP.Configuration.Extensions;
 
-namespace oncontigo_platform.Shared.Infrastructure.Interfaces.ASP.Configuration
+namespace oncontigo_platform.Shared.Interfaces.ASP.Configuration
 {
     public class KebabCaseRouteNamingConvention : IControllerModelConvention
     {
