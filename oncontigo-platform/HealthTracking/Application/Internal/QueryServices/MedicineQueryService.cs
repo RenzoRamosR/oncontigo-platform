@@ -11,5 +11,10 @@ namespace oncontigo_platform.HealthTracking.Application.Internal.QueryServices
         {
             return await medicineRepository.ListAsync();
         }
+
+        public async Task<IEnumerable<Medicine>> Handle(GetAllMedicinesByPatientFollowUpIdQuery query)
+        {
+            return await medicineRepository.ListByPatientFollowUpId(query.patientFollowUpId);
+        }
     }
 }

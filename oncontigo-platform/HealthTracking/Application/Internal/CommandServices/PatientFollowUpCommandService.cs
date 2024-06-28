@@ -32,7 +32,7 @@ namespace oncontigo_platform.HealthTracking.Application.Internal.CommandServices
             return patientFollowUp; // Retorna el seguimiento creado
         }
 
-        public async Task<PatientFollowUp?> Handle(RemovePatientFollowUpByPatientId command)
+        public async Task<PatientFollowUp?> Handle(RemovePatientFollowUpByPatientIdCommand command)
         {
             var patientFollowUp = await patientFollowUpRepository.FindByPatientId(command.patientId);
             if (patientFollowUp == null) { return null; }

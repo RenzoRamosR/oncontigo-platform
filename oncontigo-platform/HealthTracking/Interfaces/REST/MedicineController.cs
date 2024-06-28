@@ -49,5 +49,14 @@ namespace oncontigo_platform.HealthTracking.Interfaces.REST
             var medicineResource = MedicineResourceFromEntityAssembler.ToResourceFromEntity(request);
             return Ok(medicineResource);
         }
+
+        [HttpGet("by-patientFollowUpId/{patientFollowUpId}")]
+        public async Task<IActionResult> GetAllMedicinesByPatientFollowUpId([FromRoute] int patientFollowUpId)
+        {
+            var getAllMedicinesByPatientFollowUpId = new GetAllMedicinesByPatientFollowUpIdQuery(patientFollowUpId);
+            var medicines = await medicineQueryService.Handle(getAllMedicinesByPatientFollowUpId);
+            var resources = medicines.Select(MedicineResourceFromEntityAssembler.ToResourceFromEntity);
+            return Ok(resources);
+        }
     }
 }
