@@ -32,12 +32,10 @@ namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
                     mI.Property(mI=> mI.Description).HasColumnName("MedicineDescription");
                 });
 
-            builder.Entity<PatientFollowUp>()
-                .ToTable("patient_follow_ups")  
-                .HasKey(pf => pf.Id); 
+            builder.Entity<PatientFollowUp>().ToTable("patient_follow_ups");  // Llave primaria
 
-            builder.Entity<PatientFollowUp>()
-                .Property(pf => pf.Id)
+            builder.Entity<PatientFollowUp>().HasKey(p => p.Id);
+            builder.Entity<PatientFollowUp>().Property(p => p.Id)
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
@@ -51,10 +49,22 @@ namespace oncontigo_platform.Shared.Infrastructure.Persistence.EPC.Configuration
                 .HasForeignKey(m => m.PatientFollowUpId);
 
             builder.Entity<PatientFollowUp>()
-                .HasOne<PatientId>();
+                .OwnsOne(p => p.PatientId,
+                a =>
+                {
+                    a.WithOwner().HasForeignKey("Id");
+                    a.Property(a => a.patientId).HasColumnName("patient");
+                });
+
+
 
             builder.Entity<PatientFollowUp>()
-                .HasOne<DoctorId>();
+                .OwnsOne(p => p.DoctorId,
+                a =>
+                {
+                    a.WithOwner().HasForeignKey("Id");
+                    a.Property(a => a.doctorId).HasColumnName("doctor");
+                });
 
 
             builder.Entity<User>().ToTable("Users");

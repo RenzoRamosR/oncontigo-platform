@@ -7,7 +7,7 @@ namespace oncontigo_platform.HealthTracking.Interfaces.REST.Transformers
     {
         public static PatientFollowUpResource ToResourceFromEntity(PatientFollowUp patientFollowUp)
         {
-            return new PatientFollowUpResource(patientFollowUp.PatientId.Id, patientFollowUp.DoctorId.Id, (int) patientFollowUp.Status);
+            return new PatientFollowUpResource(patientFollowUp.PatientId.patientId, patientFollowUp.DoctorId.doctorId, (int) patientFollowUp.Status);
         }
     }
 }

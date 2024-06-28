@@ -10,12 +10,12 @@ namespace oncontigo_platform.HealthTracking.Infrastructure
     {
         public async Task<PatientFollowUp?> FindByPatientId(int PatientId)
         {
-           return  await Context.Set<PatientFollowUp>().Where(p => p.PatientId.Id == PatientId).FirstOrDefaultAsync();
+           return  await Context.Set<PatientFollowUp>().Where(p => p.PatientId.patientId == PatientId).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<PatientFollowUp>> ListByDoctorId(int DoctorId)
         {
-            return await Context.Set<PatientFollowUp>().Where(p=> p.DoctorId.Id == DoctorId).ToListAsync();
+            return await Context.Set<PatientFollowUp>().Where(p=> p.DoctorId.doctorId == DoctorId).ToListAsync();
         }
     }
 }

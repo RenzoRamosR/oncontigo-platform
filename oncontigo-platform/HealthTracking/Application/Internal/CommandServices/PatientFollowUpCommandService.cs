@@ -11,19 +11,25 @@ namespace oncontigo_platform.HealthTracking.Application.Internal.CommandServices
     {
         public async Task<PatientFollowUp?> Handle(CreatePatientFollowUpCommand command)
         {
-            
             var patientId = await externalProfileService.FetchPatientIdById(command.patientId);
             var doctorId = await externalProfileService.FetchDoctorIdById(command.doctorId);
 
-            if (patientId == null || doctorId==null) { return null; }
+            if (patientId == null || doctorId == null)
+            {
+                return null; // Se retorna inmediatamente si no se obtienen los IDs
+            }
 
             var patientFollowUpE = await patientFollowUpRepository.FindByPatientId(command.patientId);
-            if (patientFollowUpE != null) { return null; }
+            if (patientFollowUpE != null)
+            {
+                return null; // Retorna null si ya existe un seguimiento para el paciente
+            }
 
-            var patientFollowUp = new PatientFollowUp(patientId,doctorId,command.status);
+            var patientFollowUp = new PatientFollowUp(patientId, doctorId, command.status);
             await patientFollowUpRepository.AddAsync(patientFollowUp);
             await unitOfWork.CompleteAsync();
-            return patientFollowUp;
+
+            return patientFollowUp; // Retorna el seguimiento creado
         }
 
         public async Task<PatientFollowUp?> Handle(RemovePatientFollowUpByPatientId command)

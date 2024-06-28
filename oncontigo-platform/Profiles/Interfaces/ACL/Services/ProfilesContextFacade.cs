@@ -9,9 +9,6 @@ namespace oncontigo_platform.Profiles.Interfaces.ACL.Services;
 
 public class ProfilesContextFacade(IPatientQueryService patientQueryService, IDoctorQueryService doctorQueryService) : IProfilesContextFacade
 {
-    
-
-
     public async Task<int> FetchDoctorIdById(int doctorId)
     {
         var getDoctorByIdQuery = new GetDoctorByIdQuery(doctorId);
