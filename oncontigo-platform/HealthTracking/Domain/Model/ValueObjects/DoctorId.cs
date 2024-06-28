@@ -1,6 +1,5 @@
 ﻿namespace oncontigo_platform.HealthTracking.Domain.Model.ValueObjects
 {
-    public class DoctorId
-    {
-    }
+    public record DoctorId(int Id);
+    
 }

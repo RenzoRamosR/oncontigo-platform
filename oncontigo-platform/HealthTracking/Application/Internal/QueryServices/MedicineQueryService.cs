@@ -7,7 +7,7 @@ namespace oncontigo_platform.HealthTracking.Application.Internal.QueryServices
 {
     public class MedicineQueryService(IMedicineRepository medicineRepository): IMedicineQueryService
     {
-        public async Task<IEnumerable<Medicine>> Handle(GetAllMedicationsQuery query)
+        public async Task<IEnumerable<Medicine>> Handle(GetAllMedicinesQuery query)
         {
             return await medicineRepository.ListAsync();
         }
